@@ -1,5 +1,5 @@
 import React from "react";
-import { UserButton } from "@clerk/nextjs";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 const Landingpage = () => {
@@ -14,7 +14,7 @@ const Landingpage = () => {
           <Button>Register</Button>
         </Link>
       </div>
-      <UserButton afterSignOutUrl="/" />
+     
     </div>
   );
 };
