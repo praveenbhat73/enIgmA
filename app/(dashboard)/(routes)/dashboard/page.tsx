@@ -1,9 +1,13 @@
 import React from 'react'
 import { Button } from "@/components/ui/button"
+
 const DashboardPage = () => {
   return (
     <div>
-      <Button variant="outline">Button</Button>
+      Dashboard (protected)
+      <div>
+      
+      </div>
     </div>
   )
 }
