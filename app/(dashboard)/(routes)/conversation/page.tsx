@@ -14,6 +14,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { BotAvatar } from "@/components/botavatar";
 import { UserAvatar } from "@/components/useravatar";
 import { ChatCompletionRequestMessage } from "openai";
+import { Loader } from "@/components/loader";
+import { Empty } from "@/components/empty";
 import * as z from "zod";
 const Conversation = () => {
     const router = useRouter();
@@ -43,7 +45,7 @@ const Conversation = () => {
   };
 
   return (
-    <>
+
       <div>
         <Heading
           title="Conversation"
@@ -96,23 +98,35 @@ const Conversation = () => {
               </form>
             </Form>
             <div className="space-y-4 mt-4">
+            {isLoading && (
+            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
+              <Loader />
+            </div>
+          )}
+          {messages.length === 0 && !isLoading && (
+            <Empty label="No conversation started." />
+          )}
           <div className="flex flex-col-reverse gap-y-4">
-            {
-                messages.map((message)=>(
-                    <div key={message.content}>
-                        {
-                            message.content
-                        }
-                    </div>
-                ))
-            }
+            {messages.map((message) => (
+              <div 
+                key={message.content} 
+                className={cn(
+                  "p-8 w-full flex items-start gap-x-8 rounded-lg",
+                  message.role === "user" ? "bg-transparent border border-white" : "bg-muted",
+                )}
+              >
+                {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
+                <p className="text-sm">
+                  {message.content}
+                </p>
+              </div>
+            ))}
           </div>
-          </div>
-
           </div>
         </div>
       </div>
-    </>
+      </div>
+  
   );
 };
 export default Conversation;
