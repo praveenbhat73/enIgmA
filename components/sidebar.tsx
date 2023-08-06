@@ -1,3 +1,11 @@
+//next js server and client side renderig is easy 
+// sign in and sign up made with clerk
+//api is made using axios and open ai
+//shadcn ui used 
+//() doesnt effect the routes
+//folder name is path name routes
+
+
 "use client";
 import React from "react";
 import Image from "next/image";
