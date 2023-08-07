@@ -48,6 +48,8 @@ const tools=[
 ]
 const DashboardPage = () => {
   const router = useRouter();
+  //provides the information about current route and helps to navigate to the different route 
+  //router variable is assigned the value returned by the useRouter() hook from Next.js.
   return (
     <div>
       <div className='mb-8 space-y-4'>

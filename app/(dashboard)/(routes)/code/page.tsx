@@ -35,18 +35,28 @@ const CodePage = () => {
       prompt: ""
     }
   });
+  //useform hook is used to manage all the state of the form like submit,submitting ...etc
+  //it infers the typeof formschema which validation method defined
+  //zodresolver is used to validate the form data against formschema
+
 
   const isLoading = form.formState.isSubmitting;
   
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const userMessage: ChatCompletionRequestMessage = { role: "user", content: values.prompt };
+      //usermessage is newvariable created of type chatcompletionrequestmessage which contains role and validated form data
+
       const newMessages = [...messages, userMessage];
+      // its new valriable which takes old messages and set with the userMessage
       
       const response = await axios.post('/api/code', { messages: newMessages });
+      // response is the data which is got from the post api to code in api folder by passing messages as newMessages 
       setMessages((current) => [...current, userMessage, response.data]);
+      //setMessages with response data and by saving current messages 
       
       form.reset();
+      
     } catch (error: any) {
       console.log(error)
     } finally {
@@ -89,7 +99,7 @@ const CodePage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading} 
-                        placeholder="Simple toggle button using react hooks." 
+                        placeholder="Simple login page in React" 
                         {...field}
                       />
                     </FormControl>
