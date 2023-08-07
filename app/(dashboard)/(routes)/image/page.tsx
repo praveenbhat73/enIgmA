@@ -88,7 +88,7 @@ const PhotoPage = () => {
                     <Input
                       className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                       disabled={isLoading} 
-                      placeholder="A picture of a horse in Swiss alps" 
+                      placeholder="Sun picture" 
                       {...field}
                     />
                   </FormControl>

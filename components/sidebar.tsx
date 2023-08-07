@@ -26,6 +26,7 @@ const montserrat = Montserrat({
   weight: "600",
   subsets: ["cyrillic"],
 });
+//montserrat is the font foamily function which takes parameter -> weight and subsets cyrillic is the font char style
 
 const routes = [
   {
@@ -71,7 +72,8 @@ const routes = [
     color: "text-blue-200",
   },
 ];
-
+//array containing different values -> lable , icon ,href, color 
+//use map function instead of writing different code for all those 
 const Sidebar = () => {
   const pathname = usePathname();
   return (
@@ -85,6 +87,7 @@ const Sidebar = () => {
             enIgmA
           </h1>
         </Link>
+        {/* //cn is used to concatinate two classnames , it has taken two parameters here one is - tailwind ,montserrat.classname */}
         <div className="space-y-1">
           {routes.map((route) => (
             <Link
